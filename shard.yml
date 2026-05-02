@@ -1,0 +1,21 @@
+name: event_stream_parser
+version: 1.0.0
+
+authors:
+  - Ates Goral <ates.goral@shopify.com>
+
+description: |
+  A spec-compliant event stream parser
+
+homepage: https://github.com/Shopify/event_stream_parser
+license: MIT
+
+crystal: ">= 1.0.0"
+
+development_dependencies:
+  spectator:
+    github: icy-arctic-fox/spectator
+
+targets:
+  event_stream_parser:
+    main: src/event_stream_parser.cr

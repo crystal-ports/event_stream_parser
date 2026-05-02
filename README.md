@@ -1,6 +1,5 @@
 # event_stream_parser
 
-[![Gem (including prereleases)](https://img.shields.io/gem/v/event_stream_parser?1.0.0)](https://rubygems.org/gems/event_stream_parser)
 [![CI](https://github.com/Shopify/event_stream_parser/actions/workflows/ci.yml/badge.svg)](https://github.com/Shopify/event_stream_parser/actions/workflows/ci.yml)
 
 A lightweight, fully spec-compliant parser for the
@@ -18,35 +17,33 @@ BOM stripping is left as a responsibility of the chunk provider.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this shard to your application's `shard.yml`:
 
-```ruby
-gem 'event_stream_parser'
+```yaml
+dependencies:
+  event_stream_parser:
+    github: Shopify/event_stream_parser
 ```
 
-And then execute:
+Then run:
 
 ```sh
-bundle
-```
-
-Or install it yourself as:
-
-```sh
-gem install event_stream_parser
+shards install
 ```
 
 ## Usage
 
 Create a new Parser:
 
-```rb
+```cr
+require "event_stream_parser"
+
 parser = EventStreamParser::Parser.new
 ```
 
 Then, feed it chunks as they come in:
 
-```rb
+```cr
 do_something_that_yields_chunks do |chunk|
   parser.feed(chunk) do |type, data, id, reconnection_time|
     puts "Event type: #{type}"
@@ -60,7 +57,7 @@ end
 Or use the `stream` method to generate a proc that you can pass to a chunk
 producer:
 
-```rb
+```cr
 parser_stream = parser.stream do |type, data, id, reconnection_time|
   puts "Event type: #{type}"
   puts "Event data: #{data}"
@@ -75,11 +72,9 @@ do_something_that_yields_chunks(&parser_stream)
 
 After checking out the repo:
 
-1. Run `bundle` to install dependencies.
-2. Run `rake test` to run the tests.
-3. Run `rubocop` to run Rubocop.
-
-To install this gem onto your local machine, run `bundle exec rake install`.
+1. Run `shards install` to install dependencies.
+2. Run `crystal spec` to run the Spectator suite.
+3. Run `crystal build src/event_stream_parser.cr` to check the shard builds.
 
 ## Contributing
 
@@ -90,7 +85,7 @@ to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. 
 
 ## License
 
-The gem is available as open source under the terms of the
+The shard is available as open source under the terms of the
 [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct

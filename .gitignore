@@ -1,10 +1,10 @@
-/.bundle/
-/.yardoc
-/_yardoc/
 /coverage/
-/doc/
-/pkg/
 /spec/reports/
 /tmp/
+/bin/
+/lib/
+/.shards/
+*.dwarf
+shard.lock
+.spectator-failures
 dev.yml
-/Gemfile.lock
